@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jitsi-jvb
+  namespace: jitsi
+spec:
+  replicas: 2 # Start with 2 instances for scaling
+  selector:
+    matchLabels:
+      app: jitsi-jvb
+  template:
+    metadata:
+      labels:
+        app: jitsi-jvb
+    spec:
+      containers:
+        - name: jvb
+          image: { { .Values.images.jvb } }
+          ports:
+            - containerPort: { { .Values.networking.jvbUdpPort } }
+              protocol: UDP
+          env:
+            - name: XMPP_SERVER
+              value: "jitsi-prosody.jitsi.svc.cluster.local"
+            - name: XMPP_DOMAIN
+              value: { { .Values.domain } }
+            - name: XMPP_AUTH_DOMAIN
+              value: { { .Values.xmpp.authDomain } }
+            - name: XMPP_MUC_DOMAIN
+              value: { { .Values.xmpp.mucDomain } }
+            - name: XMPP_INTERNAL_MUC_DOMAIN
+              value: { { .Values.xmpp.internalMucDomain } }
+            - name: JICOFO_COMPONENT_SECRET
+              value: { { .Values.jitsiSecrets.jicofoComponentSecret } }
+            - name: JICOFO_AUTH_PASSWORD
+              value: { { .Values.jitsiSecrets.jicofoAuthPassword } }
+            - name: JVB_AUTH_PASSWORD
+              value: { { .Values.jitsiSecrets.jvbAuthPassword } }

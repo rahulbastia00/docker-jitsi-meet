@@ -1,0 +1,28 @@
+domain: meet.hrnbyl.com
+certificateArn: PUT_CERT
+
+networking:
+  jvbUdpPort: 10000
+
+images:
+  web: jitsi/web:stable
+  prosody: jitsi/prosody:stable
+  jicofo: jitsi/jicofo:stable
+  jvb: jitsi/jvb:stable
+
+jitsiSecrets:
+  jicofoComponentSecret: "JicofoSecret123!"
+  jicofoAuthPassword: "JicofoAuthPassword123!"
+  jvbAuthPassword: "JvbAuthPassword123!"
+
+xmpp:
+  authDomain: "auth.meet.hrnbyl.com"
+  mucDomain: "muc.meet.hrnbyl.com"
+  internalMucDomain: "internal-muc.meet.hrnbyl.com"
+
+metrics:
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
