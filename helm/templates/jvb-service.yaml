@@ -13,6 +13,6 @@ spec:
     app: jitsi-jvb
   ports:
     - name: media-udp
-      port: { { .Values.networking.jvbUdpPort } }
-      targetPort: { { .Values.networking.jvbUdpPort } }
+      port: {{ .Values.networking.jvbUdpPort }}
+      targetPort: {{ .Values.networking.jvbUdpPort }}
       protocol: UDP

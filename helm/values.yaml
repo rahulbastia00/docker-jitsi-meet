@@ -1,5 +1,5 @@
 domain: meet.hrnbyl.com
-certificateArn: PUT_CERT
+certificateArn: arn:aws:acm:ap-south-1:100390193083:certificate/5cdaed7b-bad6-4f14-9059-79b6603a39d1
 
 networking:
   jvbUdpPort: 10000

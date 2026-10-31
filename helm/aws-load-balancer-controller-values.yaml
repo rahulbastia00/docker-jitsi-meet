@@ -1,0 +1,10 @@
+# Helm values for AWS Load Balancer Controller on EKS
+clusterName: jitsi-eks-cluster
+region: ap-south-1
+vpcId: vpc-0884d83c40cf39ffc
+
+serviceAccount:
+  create: true
+  name: aws-load-balancer-controller
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::100390193083:role/AmazonEKSLoadBalancerControllerRole

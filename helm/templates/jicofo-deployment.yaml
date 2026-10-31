@@ -15,19 +15,19 @@ spec:
     spec:
       containers:
         - name: jicofo
-          image: { { .Values.images.jicofo } }
+          image: {{ .Values.images.jicofo }}
           env:
             - name: XMPP_SERVER
               value: "jitsi-prosody.jitsi.svc.cluster.local"
             - name: XMPP_DOMAIN
-              value: { { .Values.domain } }
+              value: {{ .Values.domain }}
             - name: XMPP_AUTH_DOMAIN
-              value: { { .Values.xmpp.authDomain } }
+              value: {{ .Values.xmpp.authDomain }}
             - name: XMPP_MUC_DOMAIN
-              value: { { .Values.xmpp.mucDomain } }
+              value: {{ .Values.xmpp.mucDomain }}
             - name: XMPP_INTERNAL_MUC_DOMAIN
-              value: { { .Values.xmpp.internalMucDomain } }
+              value: {{ .Values.xmpp.internalMucDomain }}
             - name: JICOFO_COMPONENT_SECRET
-              value: { { .Values.jitsiSecrets.jicofoComponentSecret } }
+              value: {{ .Values.jitsiSecrets.jicofoComponentSecret }}
             - name: JICOFO_AUTH_PASSWORD
-              value: { { .Values.jitsiSecrets.jicofoAuthPassword } }
+              value: {{ .Values.jitsiSecrets.jicofoAuthPassword }}
